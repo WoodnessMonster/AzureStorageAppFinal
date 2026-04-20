@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Azure.Data.Tables.TableEntity>
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h2>Customer Profiles</h2>
+
+<form asp-action="Add" method="post">
+    <input type="text" name="id" placeholder="ID" required />
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <button type="submit">Add Customer</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>RowKey</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.RowKey</td>
+                <td>@customer["Name"]</td>
+                <td>@customer["Email"]</td>
+            </tr>
+        }
+    </tbody>
+</table>
