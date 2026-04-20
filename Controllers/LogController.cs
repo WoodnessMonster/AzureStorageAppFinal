@@ -11,7 +11,7 @@ namespace AzureStorageApp.Controllers
         {
             _fileService = fileService;
         }
-
+         
         
         [HttpGet]
         public IActionResult Write()
