@@ -18,5 +18,12 @@ namespace AzureStorageApp.Controllers
             ViewBag.Status = "Message sent to queue!";
             return View();
         }
+
+        public async Task<IActionResult> Receive()
+        {
+            var message = await _queueService.ReceiveMessageAsync();
+            ViewBag.Message = message ?? "No messages available.";
+            return View();
+        }
     }
 }

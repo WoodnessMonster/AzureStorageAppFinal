@@ -1,0 +1,9 @@
+﻿@model IEnumerable<string>
+
+<h2>Uploaded Images</h2>
+<ul>
+    @foreach (var blob in Model)
+    {
+        <li>@blob</li>
+    }
+</ul>

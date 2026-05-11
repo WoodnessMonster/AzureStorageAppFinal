@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AzureStorageApp.Services
 {
@@ -24,6 +26,11 @@ namespace AzureStorageApp.Services
         public string GetImageUrl(string fileName)
         {
             return _containerClient.GetBlobClient(fileName).Uri.ToString();
+        }
+
+        public IEnumerable<string> ListImages()
+        {
+            return _containerClient.GetBlobs().Select(b => b.Name);
         }
     }
 }

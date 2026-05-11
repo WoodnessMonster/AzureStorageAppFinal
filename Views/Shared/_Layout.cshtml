@@ -13,7 +13,11 @@
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">AzureStorageApp</a>
-                <div class="collapse navbar-collapse">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
@@ -22,13 +26,22 @@
                             <a class="nav-link" asp-controller="Customer" asp-action="Index">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Image" asp-action="Upload">Images</a>
+                            <a class="nav-link" asp-controller="Image" asp-action="Upload">Upload Image</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Order" asp-action="Send">Orders</a>
+                            <a class="nav-link" asp-controller="Image" asp-action="ListImages">View Images</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Log" asp-action="Write">Logs</a>
+                            <a class="nav-link" asp-controller="Order" asp-action="Send">Send Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Order" asp-action="Receive">Receive Queue Message</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Log" asp-action="Write">Write Log</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Log" asp-action="ListLogs">View Logs</a>
                         </li>
                     </ul>
                 </div>
@@ -46,6 +59,7 @@
             &copy; 2026 - AzureStorageApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

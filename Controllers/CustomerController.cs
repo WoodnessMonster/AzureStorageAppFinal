@@ -32,6 +32,13 @@ namespace AzureStorageApp.Controllers
             table.AddEntity(entity);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Delete(string id)
+        {
+            var table = _tableService.GetCustomerProfilesTable();
+            table.DeleteEntity("Customer", id);
+            return RedirectToAction("Index");
+        }
     }
 }
-

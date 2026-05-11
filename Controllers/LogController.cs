@@ -11,15 +11,13 @@ namespace AzureStorageApp.Controllers
         {
             _fileService = fileService;
         }
-           
-        
+
         [HttpGet]
         public IActionResult Write()
         {
             return View();
         }
 
-        
         [HttpPost]
         public async Task<IActionResult> Write(string message)
         {
@@ -27,6 +25,13 @@ namespace AzureStorageApp.Controllers
             await _fileService.UploadLogAsync(fileName, message);
             ViewBag.Status = $"Log file {fileName} uploaded!";
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListLogs()
+        {
+            var logs = await _fileService.ListLogsAsync();
+            return View(logs);
         }
     }
 }

@@ -36,6 +36,12 @@ namespace AzureStorageApp.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public IActionResult ListImages()
+        {
+            var blobs = _blobService.ListImages();
+            return View(blobs);
+        }
     }
 }
-

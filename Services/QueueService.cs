@@ -19,5 +19,17 @@ namespace AzureStorageApp.Services
         {
             await _queueClient.SendMessageAsync(message);
         }
+
+        public async Task<string?> ReceiveMessageAsync()
+        {
+            var response = await _queueClient.ReceiveMessageAsync();
+            if (response.Value != null)
+            {
+                string text = response.Value.MessageText;
+                await _queueClient.DeleteMessageAsync(response.Value.MessageId, response.Value.PopReceipt);
+                return text;
+            }
+            return null;
+        }
     }
 }

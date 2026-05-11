@@ -3,6 +3,8 @@ using Azure.Storage.Files.Shares;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AzureStorageApp.Services
 {
@@ -25,6 +27,13 @@ namespace AzureStorageApp.Services
             using var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content));
             await fileClient.CreateAsync(stream.Length);
             await fileClient.UploadRangeAsync(new HttpRange(0, stream.Length), stream);
+        }
+
+        public async Task<IEnumerable<string>> ListLogsAsync()
+        {
+            var directory = _shareClient.GetRootDirectoryClient();
+            var files = directory.GetFilesAndDirectories();
+            return files.Select(f => f.Name);
         }
     }
 }
